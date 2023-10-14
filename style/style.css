@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css?family=Bayon");
+@import url("https://fonts.googleapis.com/css?family=Ysabeau SC");
+:root{
+    --accentG: #470;
+
+    --base050: #fff;
+    --base100: #eee;
+    --base200: #ddd;
+    --base300: #ccc;
+    --base400: #555;
+
+    --base900: #000;
+}
+::selection{
+    background-color: var(--base900);
+    color: var(--base050);
+}
+img{
+    user-select: none;
+}
+*{
+    margin: 0 auto;
+    font-family: 'Ysabeau SC';
+    box-sizing: border-box;
+}
+body{
+    background: var(--base050);
+    background-image: linear-gradient(var(--base200) .05em, transparent .05em), linear-gradient(90deg, var(--base200) .05em, transparent .05em);
+    background-size: 1.5em 1.5em;
+}
+header{
+    background: var(--accentG);
+    color: var(--base100);
+    padding: .25em;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: .1em .1em var(--base900);
+    text-align: center;
+}
+main{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem 2rem;
+    min-height: 80%;
+}
+footer{
+    background-color: var(--base200);
+    color: var(--base400);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    letter-spacing: .5rem;
+}
+h3{
+    margin: .5em;
+}
+.title{
+    box-shadow: 0 .2em 0 0 var(--accentG);
+    padding: .2em;
+    border-radius: .5em;
+}
+.panel{
+    width: 45%;
+}
+.panel h2{
+    background: var(--accentG);
+    color: var(--base100);
+    padding: .5em;
+    border-radius: .5em .5em 0 0;
+}
+.panel h4{
+    border-bottom: .2em solid var(--accentG);
+    margin: .2em;
+}
+.panel ul{
+    list-style: none;
+    padding-left: 0;
+}
+.panel li{
+    display: flex;
+    background: var(--base200);
+    padding: 1em;
+    margin: .2em;
+    justify-content: space-between;
+    align-items: center;
+}
+.panel p{
+    color: var(--base400);
+}
+.panel .content{
+    background: var(--base100);
+    padding: 1em .5em;
+}
+.listed:hover{
+    box-shadow: -.2em 0 0 0 var(--accentG);
+}
+.button{
+    background: var(--accentG);
+    color: var(--base100);
+    cursor: pointer;
+    transition: all .1s;
+}
+.button:hover{
+    text-decoration: underline;
+    box-shadow: 0 0 .5em 0 var(--base900);
+}
+.button:active{
+    font-weight: bold;
+}
+input[type="text"], input[type="number"], .button{
+    border: none;
+    outline: none;
+    padding: 1em;
+    margin: .5em 0;
+}
+
+input[type="text"]:focus, input[type="number"]:focus{
+    box-shadow: 0 .2em 0 0 var(--accentG);
+}
+
+.options{
+    position: relative;
+    display: flex;
+    margin: 0;
+}
+.options button{
+    position: relative;
+    background-color: var(--base100);
+    aspect-ratio: 1 / 1;
+    height: 3em;
+    margin: .5em;
+    display: block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: .5em;
+    transition: transform .5s;
+}
+
+.options button:hover{
+    outline: .25em solid var(--base900);
+}
+.options button:active{
+    transform: scale(1.1);
+}
+
+table td{
+    padding: .5em;
+}
+.notification{
+    position: fixed;
+    background-color: var(--accentG);
+    color: var(--base050);
+    width: 400px;
+    padding: 1rem;
+    margin: 1rem;
+    bottom: 0;
+    left: 0;
+    animation: notification 5s forwards linear;
+    z-index: 10;
+}
+.notification:hover{
+
+    cursor: help;
+    animation-play-state: paused;
+}
+@keyframes notification {
+
+    0%{
+        transform: translate(-200%);
+    }
+    5%{
+        transform: translate(0);
+    }
+    95%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(-200%);
+    }
+
+}
+.options::after{
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translate(-25%, -50%);
+    background-color: var(--base100);
+    border-radius: .5em;
+    padding: .2em;
+    width: 3.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.options:has([show]:hover)::after{
+    content: "Show";
+}
+.options:has([edit]:hover)::after{
+    content: "Edit";
+}
+.options:has([del]:hover)::after{
+    content: "Delete";
+}
+
+::-webkit-scrollbar {
+	width: 16px;
+}
+::-webkit-scrollbar-track {
+    background: var(--base300);
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--base100);
+    border-color: var(--base300);
+    border-style: solid;
+    border-width: .1em .2em .1em .2em;
+}
+::-webkit-scrollbar-thumb:active{
+	background-color: var(--base050);
+}
+
+::-webkit-scrollbar-button{
+    background: var(--base100);
+    border: .2em solid var(--base300);
+}
+::-webkit-scrollbar-button:active{
+    background: var(--base050);
+}
