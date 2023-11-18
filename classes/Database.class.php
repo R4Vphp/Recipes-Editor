@@ -1,6 +1,6 @@
 <?php
 
-class Database {
+abstract class Database {
 
     const DATABASE_SERVER = "127.0.0.1";
     const DATABASE_NAME = "recipes_app";
@@ -23,8 +23,11 @@ class Database {
 
     }
 
-    protected static function setNotificationMessage($message){
-        $_SESSION["NOTIFICATION"] = $message;
+    protected static function setNotificationMessage($message, $type = Notification::TYPE_SUCCESS){
+        $_SESSION["NOTIFICATION"] = [
+            "MSG" => $message,
+            "TYPE" => $type
+        ];
     }
 
 }

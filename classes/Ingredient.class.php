@@ -25,7 +25,7 @@ class Ingredient {
 
     public function print($multiplier){
 
-        $recipeId = $_GET["recipe"];
+        $recipeId = $_GET[0];
 
         $id = $this->id;
         $name = $this->name;

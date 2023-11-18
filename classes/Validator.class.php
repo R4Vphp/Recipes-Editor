@@ -19,7 +19,7 @@ class Validator extends Database {
         ]);
 
         if($stmt->rowCount()){
-            self::setNotificationMessage($name.self::INPUT_EXISTS);
+            self::setNotificationMessage($name.self::INPUT_EXISTS, Notification::TYPE_ERROR);
             return true;
         }
         return false;
@@ -30,11 +30,11 @@ class Validator extends Database {
 
         if(strlen($input) > $max){
             $info = $max." chars.";
-            self::setNotificationMessage($name.self::INPUT_TOO_LONG.$info);
+            self::setNotificationMessage($name.self::INPUT_TOO_LONG.$info, Notification::TYPE_ERROR);
             return true;
         }elseif(strlen($input) < $min){
             $info = $min." chars.";
-            self::setNotificationMessage($name.self::INPUT_TOO_SHORT.$info);
+            self::setNotificationMessage($name.self::INPUT_TOO_SHORT.$info, Notification::TYPE_ERROR);
             return true;
         }else{
             return false;
@@ -48,7 +48,7 @@ class Validator extends Database {
 
         forEach($input as $symbol){
             if(strpos(self::ALLOWED_SYMBOLS, $symbol) === false){
-                self::setNotificationMessage($name.self::INPUT_INVALID);
+                self::setNotificationMessage($name.self::INPUT_INVALID, Notification::TYPE_ERROR);
                 return true;
             }
         }
@@ -59,7 +59,7 @@ class Validator extends Database {
     public static function isEmpty($input, $name = "Name"){
 
         if(empty($input)){
-            self::setNotificationMessage($name.self::INPUT_NULL);
+            self::setNotificationMessage($name.self::INPUT_NULL, Notification::TYPE_ERROR);
             return true;
         }
         return false;
@@ -70,7 +70,7 @@ class Validator extends Database {
 
         if(!is_float($input) OR !is_int($input)){
             return false;
-            self::setNotificationMessage($name.self::INPUT_NOT_DIGIT);
+            self::setNotificationMessage($name.self::INPUT_NOT_DIGIT, Notification::TYPE_ERROR);
         }
         
         return true;

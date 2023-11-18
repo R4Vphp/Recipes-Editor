@@ -1,5 +1,8 @@
 <?php
-Notification::listen();
+$recipeList = new RecipeList;
+$recipeList->loadRecipes();
+
+new Notification;
 ?>
 <header>
 <a href="./"><img src="style/logo_icon.svg" width="50px"/></a>

@@ -2,16 +2,17 @@
 <h2>Recipes list</h2>
 <div class='content'>
 <ul>
+<h4>Recipes:</h4>
 <?php
 
-$recipeList = new RecipeList;
-$recipeList->loadRecipes();
 $recipeList->printRecipes();
 
 ?>
 </ul>
 <form action='createRecipe.php' method='post'>
-<button class='button' type='submit' >New recipe</button>
+    <table>
+        <tr><td><button class='button' type='submit' ><div class="icon"><img src='style/create_icon.svg' height='20px'></div>New recipe</button></td></tr>
+    </table>
 </form>
 </div>
 </div>

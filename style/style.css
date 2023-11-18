@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Bayon");
 @import url("https://fonts.googleapis.com/css?family=Ysabeau SC");
 :root{
-    --accentG: #470;
+
+    --accentGreen: #470;
+    --accentYellow: #d3bf4f;
+    --accentOrange: #ca5f21;
+    --accentBlue: #5688d3;
+    --accentGray: #555;
+
+    --primaryColor: var(--accentGreen);
 
     --base050: #fff;
     --base100: #eee;
@@ -29,7 +36,7 @@ body{
     background-size: 1.5em 1.5em;
 }
 header{
-    background: var(--accentG);
+    background: var(--primaryColor);
     color: var(--base100);
     padding: .25em;
     font-size: 1rem;
@@ -52,12 +59,18 @@ footer{
     justify-content: center;
     bottom: 0;
     letter-spacing: .5rem;
+    padding: 2rem;
 }
 h3{
     margin: .5em;
 }
+h3 span{
+    background-color: var(--base900);
+    color: var(--base050);
+    padding: 0 .2em;
+}
 .title{
-    box-shadow: 0 .2em 0 0 var(--accentG);
+    box-shadow: 0 .2em 0 0 var(--primaryColor);
     padding: .2em;
     border-radius: .5em;
 }
@@ -65,13 +78,16 @@ h3{
     width: 45%;
 }
 .panel h2{
-    background: var(--accentG);
+    background: var(--primaryColor);
     color: var(--base100);
     padding: .5em;
     border-radius: .5em .5em 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .panel h4{
-    border-bottom: .2em solid var(--accentG);
+    border-bottom: .2em solid var(--primaryColor);
     margin: .2em;
 }
 .panel ul{
@@ -81,10 +97,12 @@ h3{
 .panel li{
     display: flex;
     background: var(--base200);
-    padding: 1em;
-    margin: .2em;
+    padding: .5em;
+    margin: .3em;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 0 .2em .1em #0003;
+    border-radius: .1em;
 }
 .panel p{
     color: var(--base400);
@@ -94,13 +112,29 @@ h3{
     padding: 1em .5em;
 }
 .listed:hover{
-    box-shadow: -.2em 0 0 0 var(--accentG);
+    box-shadow: 0 0 .2em .1em #0003, -.2em 0 0 0 var(--primaryColor);
 }
 .button{
-    background: var(--accentG);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primaryColor);
     color: var(--base100);
     cursor: pointer;
     transition: all .1s;
+    gap: 1em;
+    margin: .5em 0;
+}
+.button .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base100);
+    aspect-ratio: 1 / 1;
+    height: 2em;
+    outline: .25em solid var(--base900);
+    border-radius: .5em;
+    transition: transform .1s;
 }
 .button:hover{
     text-decoration: underline;
@@ -109,15 +143,31 @@ h3{
 .button:active{
     font-weight: bold;
 }
+
+.button:active .icon{
+    transform: scale(1.1);
+}
+
 input[type="text"], input[type="number"], .button{
     border: none;
     outline: none;
     padding: 1em;
-    margin: .5em 0;
+    box-shadow: 0 0 .2em .1em #0003;
 }
 
 input[type="text"]:focus, input[type="number"]:focus{
-    box-shadow: 0 .2em 0 0 var(--accentG);
+    animation: cursor 1s infinite forwards steps(1);
+    background-color: color-mix(in srgb, var(--primaryColor) 20%, var(--base050) 80%);
+}
+@keyframes cursor {
+
+    0%{
+        box-shadow: 0 0 .2em .1em #0003, 0 .2em 0 0 var(--primaryColor);
+    }
+    50%{
+        box-shadow: 0 0 .2em .1em #0003, 0 0 0 0 var(--primaryColor);
+    }
+
 }
 
 .options{
@@ -136,7 +186,8 @@ input[type="text"]:focus, input[type="number"]:focus{
     outline: none;
     cursor: pointer;
     border-radius: .5em;
-    transition: transform .5s;
+    transition: transform .1s;
+    box-shadow: 0 0 .2em .1em #0003;
 }
 
 .options button:hover{
@@ -151,7 +202,7 @@ table td{
 }
 .notification{
     position: fixed;
-    background-color: var(--accentG);
+    background-color: var(--primaryColor);
     color: var(--base050);
     width: 400px;
     padding: 1rem;
@@ -160,9 +211,28 @@ table td{
     left: 0;
     animation: notification 5s forwards linear;
     z-index: 10;
+    box-shadow: -.2em .2em 0 0 var(--base100);
+}
+.notification .icon{
+    position: absolute;
+    content: "!!";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    background-color: var(--base100);
+    color: var(--base900);
+    border: .2em solid var(--base900);
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: .5em;
+    width: 50px;
+    top: 0;
+    right: 0;
+    transform: translate(25%, -25%);
+
 }
 .notification:hover{
-
     cursor: help;
     animation-play-state: paused;
 }
@@ -188,6 +258,7 @@ table td{
     top: 50%;
     transform: translate(-25%, -50%);
     background-color: var(--base100);
+    color: var(--base900);
     border-radius: .5em;
     padding: .2em;
     width: 3.5rem;
@@ -204,6 +275,9 @@ table td{
 .options:has([del]:hover)::after{
     content: "Delete";
 }
+.options:has([rename]:hover)::after{
+    content: "Rename";
+}
 
 ::-webkit-scrollbar {
 	width: 16px;
@@ -213,19 +287,23 @@ table td{
 }
 
 ::-webkit-scrollbar-thumb{
-    background: var(--base100);
-    border-color: var(--base300);
-    border-style: solid;
-    border-width: .1em .2em .1em .2em;
+    background: var(--base400);
+	border: 4px solid var(--base300);
+	border-top: none;
+	border-bottom: none;
 }
-::-webkit-scrollbar-thumb:active{
-	background-color: var(--base050);
-}
-
 ::-webkit-scrollbar-button{
-    background: var(--base100);
-    border: .2em solid var(--base300);
+    background: var(--base400);
+	border: 4px solid var(--base300);
 }
-::-webkit-scrollbar-button:active{
-    background: var(--base050);
+a.click{
+    font-size: 1rem;
+    background-color: var(--base100);
+    color: var(--base900);
+    padding: .2em;
+    border-radius: .3em;
+    text-decoration: none;
+}
+a.click:hover{
+    text-decoration: underline;
 }

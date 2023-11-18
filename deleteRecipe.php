@@ -1,9 +1,7 @@
 <html>
-<head>
 <?php
 require_once("components/head.html.php");
 ?>
-</head>
 <body>
 <?php
 require_once("components/header.html.php");
@@ -14,10 +12,8 @@ require_once("components/recipeList.html.php");
 require_once("components/recipeDelete.html.php");
 ?>
 </main>
-<footer>
 <?php
 require_once("components/footer.html.php");
 ?>
-</footer>
 </body>
 </html>

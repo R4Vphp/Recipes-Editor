@@ -39,7 +39,7 @@ class IngredientAdd extends Database {
         }
         if(
             $val->isEmpty($unit, "Unit") OR
-            $val->inproperLen($unit, "Unit", 1, 16)
+            $val->inproperLen($unit, "Unit", 1, 32)
         ){
             return false;
         }
@@ -51,7 +51,7 @@ class IngredientAdd extends Database {
 
         $id = strtoupper(hash(self::HASH_METHOD, time()));
         $name = htmlspecialchars($this->name);
-        $amount = $this->amount;
+        $amount = abs($this->amount);
         $unit = htmlspecialchars($this->unit);
         $recipeId = $this->recipeId;
 

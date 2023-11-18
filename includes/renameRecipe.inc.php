@@ -6,14 +6,23 @@ require_once("../classes/Database.class.php");
 require_once('../classes/Validator.class.php');
 require_once("../classes/Recipe.class.php");
 require_once("../classes/Ingredient.class.php");
-require_once("../classes/RecipeDestroyer.class.php");
+require_once("../classes/RecipeRename.class.php");
 require_once("../classes/Notification.class.php");
 
 session_start();
 
-$controler = new RecipeDestroyer;
+$controler = new RecipeRename;
 
 $controler->grabInputs();
+$recipeId = $controler->getRecipeId();
 
-$controler->deleteRecipe();
-header("Location: ../");
+if($controler->handleErrors()){
+
+    $controler->changeName();
+    header("Location: ../editRecipe.php?$recipeId");
+
+}else{
+
+    header("Location: ../renameRecipe.php?$recipeId");   
+
+}

@@ -7,7 +7,7 @@
 
 <table>
     <tr><td><label>Name:<label></td><td><input id='recipeName' name='recipeName' type='text' autocomplete="off" autofocus /></td></tr>
-    <tr><td><button class='button' type='submit' >Confirm</button></td></tr>
+    <tr><td><button class='button' type='submit' ><div class="icon"><img src='style/create_icon.svg' height='20px'></div>Create</button></td></tr>
 </table>
 
 </form>

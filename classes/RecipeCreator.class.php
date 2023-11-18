@@ -18,9 +18,9 @@ class RecipeCreator extends Database{
         $val = new Validator;
         
         if(
-            $val->isEmpty($name) OR
-            $val->alreadyTaken($name, "Name", "recipes", "title") OR
-            $val->inproperLen($name)
+            $val->isEmpty($name, "Recipe name") OR
+            $val->alreadyTaken($name, "Recipe name", "recipes", "title") OR
+            $val->inproperLen($name, "Recipe name")
         ){
             return false;
         }
