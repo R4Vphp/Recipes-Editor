@@ -7,7 +7,7 @@ if(!is_object($selectedRecipe)){
 
 ?>
 <div class='panel'>
-<h2>Warning</h2>
+<h2>Warning!<div class="options"><a href="./"><img src="style/delete_icon.svg" height="20px"></a></div></h2>
 <div class='content'>
 <ul>
 <li>

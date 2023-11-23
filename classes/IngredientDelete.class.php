@@ -16,10 +16,9 @@ class IngredientDelete extends Database {
 
     public function deleteIngredient(){
 
-        $stmt = $this->connectDatabase()->prepare("DELETE FROM ingredients WHERE id = ?");
-        $stmt->execute([
-            $this->ingrId
-        ]);
+        $stmt = $this->connectDatabase()->prepare(sqlQuery::DELETE_INGREDIENT);
+        $stmt->bindParam(":id", $this->ingrId, PDO::PARAM_STR);
+        $stmt->execute();
 
         self::setNotificationMessage(self::SUCCESS);
 

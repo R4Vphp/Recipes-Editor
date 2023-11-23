@@ -55,14 +55,13 @@ class IngredientAdd extends Database {
         $unit = htmlspecialchars($this->unit);
         $recipeId = $this->recipeId;
 
-        $stmt = $this->connectDatabase()->prepare("INSERT INTO ingredients(id, recipeId, title, amount, unit) VALUES(?, ?, ?, ?, ?)");
-        $stmt->execute([
-            $id,
-            $recipeId,
-            $name,
-            $amount,
-            $unit
-        ]);
+        $stmt = $this->connectDatabase()->prepare(SqlQuery::ADD_INGREDIENT);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+        $stmt->bindParam(":recipeId", $recipeId, PDO::PARAM_STR);
+        $stmt->bindParam(":title", $name, PDO::PARAM_STR);
+        $stmt->bindParam(":amount", $amount, PDO::PARAM_STR);
+        $stmt->bindParam(":unit", $unit, PDO::PARAM_STR);
+        $stmt->execute();
 
         self::setNotificationMessage(self::SUCCESS);
 

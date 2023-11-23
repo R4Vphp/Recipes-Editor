@@ -31,8 +31,7 @@ class RecipeCalculator extends Database {
 
     public function setMultiplierOnRecipe(){
 
-        return $_SESSION["RecipeMultiplier"] = $this->multiplier;
-
+        $_SESSION["RecipeMultiplier"] = $this->multiplier;
         self::setNotificationMessage(self::SUCCESS.$this->multiplier);
 
     }

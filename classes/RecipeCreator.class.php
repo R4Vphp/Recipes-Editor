@@ -34,12 +34,12 @@ class RecipeCreator extends Database{
         $name = htmlspecialchars($this->name);
         $time = time();
 
-        $stmt = $this->connectDatabase()->prepare("INSERT INTO recipes(id, title, creation_time) VALUES(?, ?, ?)");
-        $stmt->execute([
-            $id,
-            $name,
-            $time
-        ]);
+        $stmt = $this->connectDatabase()->prepare(SqlQuery::CREATE_RECIPE);
+        $stmt->bindParam(":recipeId", $id, PDO::PARAM_STR);
+        $stmt->bindParam(":title", $name, PDO::PARAM_STR);
+        $stmt->bindParam(":creation_time", $time, PDO::PARAM_INT);
+
+        $stmt->execute();
 
         self::setNotificationMessage(self::SUCCESS);
 

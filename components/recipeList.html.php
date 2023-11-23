@@ -1,7 +1,7 @@
 <div class='panel'>
 <h2>Recipes list</h2>
 <div class='content'>
-<ul>
+<ul class="limit">
 <h4>Recipes:</h4>
 <?php
 

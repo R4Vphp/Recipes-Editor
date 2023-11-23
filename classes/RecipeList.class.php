@@ -5,7 +5,7 @@ class RecipeList extends Database {
 
     public function loadRecipes(){
 
-        $recipes = $this->connectDatabase()->query("SELECT * FROM recipes ORDER BY title ASC");
+        $recipes = $this->connectDatabase()->query(SqlQuery::GET_ALL_RECIPES);
         $result = $recipes->fetchAll();
 
         $recipeList = [];
@@ -17,8 +17,9 @@ class RecipeList extends Database {
             $ingr = [];
             $time = $r["creation_time"];
 
-            $ingredients = $this->connectDatabase()->prepare("SELECT * FROM ingredients WHERE recipeId = ? ORDER BY title ASC");
-            $ingredients->execute([$recipeId]);
+            $ingredients = $this->connectDatabase()->prepare(SqlQuery::GET_INGREDIENTS_FROM_RECIPE);
+            $ingredients->bindParam(":recipeId", $recipeId, PDO::PARAM_STR);
+            $ingredients->execute();
 
             $result2 = $ingredients->fetchAll();
 

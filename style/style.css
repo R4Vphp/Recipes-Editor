@@ -3,7 +3,7 @@
 :root{
 
     --accentGreen: #470;
-    --accentYellow: #d3bf4f;
+    --accentYellow: #beac45;
     --accentOrange: #ca5f21;
     --accentBlue: #5688d3;
     --accentGray: #555;
@@ -81,10 +81,13 @@ h3 span{
     background: var(--primaryColor);
     color: var(--base100);
     padding: .5em;
-    border-radius: .5em .5em 0 0;
+    border-radius: .2em .2em 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.panel h2 img{
+    filter: invert(1);
 }
 .panel h4{
     border-bottom: .2em solid var(--primaryColor);
@@ -110,6 +113,7 @@ h3 span{
 .panel .content{
     background: var(--base100);
     padding: 1em .5em;
+    border-radius: 0 0 .2em .2em;
 }
 .listed:hover{
     box-shadow: 0 0 .2em .1em #0003, -.2em 0 0 0 var(--primaryColor);
@@ -133,7 +137,7 @@ h3 span{
     aspect-ratio: 1 / 1;
     height: 2em;
     outline: .25em solid var(--base900);
-    border-radius: .5em;
+    border-radius: .1em;
     transition: transform .1s;
 }
 .button:hover{
@@ -144,15 +148,12 @@ h3 span{
     font-weight: bold;
 }
 
-.button:active .icon{
-    transform: scale(1.1);
-}
-
 input[type="text"], input[type="number"], .button{
     border: none;
     outline: none;
     padding: 1em;
     box-shadow: 0 0 .2em .1em #0003;
+    border-radius: .1em;
 }
 
 input[type="text"]:focus, input[type="number"]:focus{
@@ -185,16 +186,17 @@ input[type="text"]:focus, input[type="number"]:focus{
     border: none;
     outline: none;
     cursor: pointer;
-    border-radius: .5em;
-    transition: transform .1s;
+    border-radius: .1em;
+    transition: all .1s;
     box-shadow: 0 0 .2em .1em #0003;
 }
 
 .options button:hover{
     outline: .25em solid var(--base900);
+    outline-offset: .25em;
 }
 .options button:active{
-    transform: scale(1.1);
+    outline-offset: 0;
 }
 
 table td{
@@ -257,13 +259,16 @@ table td{
     right: 100%;
     top: 50%;
     transform: translate(-25%, -50%);
-    background-color: var(--base100);
-    color: var(--base900);
+    background-color: var(--primaryColor);
+    color: var(--base050);
     border-radius: .5em;
     padding: .2em;
     width: 3.5rem;
     text-align: center;
     font-weight: bold;
+}
+.options:has(button:active)::after{
+    text-decoration: underline;
 }
 
 .options:has([show]:hover)::after{
@@ -296,14 +301,10 @@ table td{
     background: var(--base400);
 	border: 4px solid var(--base300);
 }
-a.click{
-    font-size: 1rem;
-    background-color: var(--base100);
-    color: var(--base900);
-    padding: .2em;
-    border-radius: .3em;
-    text-decoration: none;
+a:hover{
+    opacity: .5;
 }
-a.click:hover{
-    text-decoration: underline;
+.limit{
+    max-height: 700px;
+    overflow-y: scroll;
 }

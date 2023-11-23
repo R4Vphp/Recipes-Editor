@@ -8,9 +8,10 @@ if(!is_object($selectedRecipe)){
 
 ?>
 <div class='panel'>
-    <h2>Recipe calculator: <?= $selectedRecipe->getName(); ?> X<?= $recipeMultiplier ?></h2>
+    <h2>Recipe calculator: <?= $selectedRecipe->getName(); ?> X<?= $recipeMultiplier ?><div class="options"><a href="./"><img src="style/delete_icon.svg" height="20px"></a></div></h2>
 <div class='content'>
 <ul>
+<h4>Ingredients:</h4>
 <?php $selectedRecipe->printIngredients($recipeMultiplier); ?>
 
 <h4>Calculate:</h4>

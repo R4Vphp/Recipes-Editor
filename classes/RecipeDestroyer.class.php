@@ -14,15 +14,13 @@ class RecipeDestroyer extends Database {
 
     public function deleteRecipe(){
 
-        $deleteIngredients = $this->connectDatabase()->prepare("DELETE FROM ingredients WHERE recipeId = ?");
-        $deleteIngredients->execute([
-            $this->recipeId
-        ]);
+        $deleteIngredients = $this->connectDatabase()->prepare(SqlQuery::DELETE_INGREDIENTS_FROM_RECIPE);
+        $deleteIngredients->bindParam(":recipeId", $this->recipeId, PDO::PARAM_STR);
+        $deleteIngredients->execute();
 
-        $deleteRecipe = $this->connectDatabase()->prepare("DELETE FROM recipes WHERE id = ?");
-        $deleteRecipe->execute([
-            $this->recipeId
-        ]);
+        $deleteRecipe = $this->connectDatabase()->prepare(SqlQuery::DELETE_RECIPE);
+        $deleteRecipe->bindParam(":recipeId", $this->recipeId, PDO::PARAM_STR);
+        $deleteRecipe->execute();
 
         self::setNotificationMessage(self::SUCCESS);
 

@@ -8,12 +8,11 @@ $recipeId = $selectedRecipe->getId();
 
 ?>
 <div class='panel'>
-<h2>Recipe editor: <?= $selectedRecipe->getName(); ?></h2>
+<h2>Recipe editor: <?= $selectedRecipe->getName(); ?><div class="options"><a href="./"><img src="style/delete_icon.svg" height="20px"></a></div></h2>
 <div class='content'>
 <ul>
 <h4>Ingredients:</h4>
 <?php $selectedRecipe->printIngredients(); ?>
-
 <h4>Add something here:</h4>
 <li>
 <form action='includes/addIngredient.inc.php' method='post'>

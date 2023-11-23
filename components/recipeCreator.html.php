@@ -1,7 +1,8 @@
 <div class='panel'>
-<h2>Recipe creator</h2>
+<h2>Recipe creator<div class="options"><a href="./"><img src="style/delete_icon.svg" height="20px"></a></div></h2>
 <div class='content'>
 <ul>
+<h4>Choose a name:</h4>
 <li>
 <form action='includes/createRecipe.inc.php' method='post'>
 
