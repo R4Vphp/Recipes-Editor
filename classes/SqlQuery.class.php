@@ -18,7 +18,7 @@ abstract class SqlQuery {
         :creation_time
     )";
     const RENAME_RECIPE = "UPDATE recipes SET title = :title WHERE id = :recipeId";
-    const DELETE_RECIPE = "DELETE FROM recipes WHERE id = :recipeId";
+    const DELETE_RECIPE = "DELETE FROM ingredients WHERE recipeId = :recipeId; DELETE FROM recipes WHERE id = :recipeId";
     
     const ADD_INGREDIENT =
     "INSERT INTO
@@ -37,6 +37,5 @@ abstract class SqlQuery {
         :unit
     )";
     const DELETE_INGREDIENT = "DELETE FROM ingredients WHERE id = :id";
-    const DELETE_INGREDIENTS_FROM_RECIPE = "DELETE FROM ingredients WHERE recipeId = :recipeId";
     
 }

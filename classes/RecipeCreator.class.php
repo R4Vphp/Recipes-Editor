@@ -30,7 +30,7 @@ class RecipeCreator extends Database{
 
     public function uploadRecipe(){
 
-        $id = strtoupper(hash(self::HASH_METHOD, time()));
+        $id = strtoupper(hash(self::HASH_METHOD, bin2hex(random_bytes(8)).time()));
         $name = htmlspecialchars($this->name);
         $time = time();
 
@@ -38,7 +38,6 @@ class RecipeCreator extends Database{
         $stmt->bindParam(":recipeId", $id, PDO::PARAM_STR);
         $stmt->bindParam(":title", $name, PDO::PARAM_STR);
         $stmt->bindParam(":creation_time", $time, PDO::PARAM_INT);
-
         $stmt->execute();
 
         self::setNotificationMessage(self::SUCCESS);
