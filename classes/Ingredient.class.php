@@ -7,6 +7,13 @@ class Ingredient {
     private float $amount;
     private string $unit;
 
+    public function __construct(string $id, string $name, float $amount, string $unit){
+        $this->id = $id;
+        $this->name = $name;
+        $this->amount = $amount;
+        $this->unit = $unit;
+    }
+
     public function getName(){
         return $this->name;
     }
@@ -15,12 +22,6 @@ class Ingredient {
     }
     public function getUnit(){
         return $this->unit;
-    }
-    public function __construct(string $id, string $name, float $amount, string $unit){
-        $this->id = $id;
-        $this->name = $name;
-        $this->amount = $amount;
-        $this->unit = $unit;
     }
 
     public function print($multiplier){
