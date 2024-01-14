@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Bayon");
 @import url("https://fonts.googleapis.com/css?family=Ysabeau SC");
+
+@import url("https://fonts.googleapis.com/css?family=Acme");
+@import url("https://fonts.googleapis.com/css?family=Philosopher");
 :root{
 
     --accentGreen: #470;
@@ -36,13 +39,19 @@ body{
     background-size: 1.5em 1.5em;
 }
 header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
     background: var(--primaryColor);
     color: var(--base100);
     padding: .25em;
     font-size: 1rem;
     font-weight: bold;
-    text-shadow: .1em .1em var(--base900);
     text-align: center;
+}
+header h1{
+    text-shadow: .1em .1em var(--base900);
 }
 main{
     display: flex;
@@ -68,6 +77,18 @@ h3 span{
     background-color: var(--base900);
     color: var(--base050);
     padding: 0 .2em;
+}
+a:hover{
+    opacity: .5;
+}
+a.custom{
+    text-decoration: none;
+    color: var(--base400);
+    cursor: pointer;
+}
+a.custom:hover{
+    opacity: 1;
+    box-shadow: inset 0 -.1em 0 0 var(--primaryColor);
 }
 .title{
     box-shadow: 0 .2em 0 0 var(--primaryColor);
@@ -96,9 +117,6 @@ h3 span{
 .panel ul{
     list-style: none;
     padding-left: 0;
-}
-.panel li:focus-within{
-    box-shadow: -.2em 0 0 0 var(--primaryColor), 0 0 .2em .1em #0003;
 }
 .panel li{
     display: flex;
@@ -151,7 +169,7 @@ h3 span{
     font-weight: bold;
 }
 
-input[type="text"], input[type="number"], .button{
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], .button{
     --accent: color-mix(in srgb, var(--primaryColor) 10%, var(--base050) 90%);
     border: none;
     outline: none;
@@ -159,14 +177,17 @@ input[type="text"], input[type="number"], .button{
     box-shadow: 0 0 .2em .1em #0003;
     border-radius: .1em;
 }
-input[type="text"]:hover, input[type="number"]:hover{
+input[type="text"]:hover, input[type="number"]:hover, input[type="email"]:hover, input[type="password"]:hover{
     box-shadow: 0 0 .2em .1em #0003, 0 .2em 0 0 var(--primaryColor);
 }
 
-input[type="text"]:focus, input[type="number"]:focus{
+input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="password"]:focus{
     animation: cursor 1s infinite forwards steps(1);
     background-image: conic-gradient(transparent 90deg, var(--accent) 90deg, var(--accent) 180deg, transparent 180deg, transparent 270deg, var(--accent) 270deg);
     background-size: .75em .75em;
+}
+input[type="checkbox"]{
+    accent-color: var(--primaryColor);
 }
 @keyframes cursor {
 
@@ -267,11 +288,11 @@ table td{
     right: 100%;
     top: 50%;
     transform: translate(-25%, -50%);
-    background-color: var(--primaryColor);
-    color: var(--base050);
+    background-color: var(--base050);
+    color: var(--base900);
     border-radius: .5em;
     padding: .2em;
-    width: 3.5rem;
+    width: 4rem;
     text-align: center;
     font-weight: bold;
 }
@@ -291,6 +312,18 @@ table td{
 .options:has([rename]:hover)::after{
     content: "Rename";
 }
+.options:has([logout]:hover)::after{
+    content: "Logout";
+}
+.options:has([settings]:hover)::after{
+    content: "Settings";
+}
+.options:has([profile]:hover)::after{
+    content: "Profile";
+}
+.options:has([recipes]:hover)::after{
+    content: "Recipes";
+}
 
 ::-webkit-scrollbar {
 	width: 16px;
@@ -308,9 +341,6 @@ table td{
 ::-webkit-scrollbar-button{
     background: var(--base400);
 	border: 4px solid var(--base300);
-}
-a:hover{
-    opacity: .5;
 }
 .limit{
     max-height: 700px;

@@ -21,7 +21,6 @@ class RecipeRename extends Database {
 
         if(
             $val->isEmpty($name, "Recipe name") OR
-            $val->alreadyTaken($name, "Recipe name", "recipes", "title") OR
             $val->inproperLen($name, "Recipe name")
         ){
             return false;

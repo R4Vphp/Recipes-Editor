@@ -1,3 +1,9 @@
+<?php
+
+$recipeList = new RecipeList;
+$recipeList->loadRecipes();
+
+?>
 <div class='panel'>
 <h2>Recipes list</h2>
 <div class='content'>

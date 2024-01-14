@@ -6,17 +6,13 @@ require_once("../classes/Database.class.php");
 require_once("../classes/SqlQuery.class.php");
 require_once('../classes/Validator.class.php');
 require_once('../classes/User.class.php');
+require_once("../classes/LogInOut.class.php");
 require_once("../classes/Recipe.class.php");
 require_once("../classes/Ingredient.class.php");
-require_once("../classes/IngredientDelete.class.php");
 require_once("../classes/Notification.class.php");
 
 session_start();
 
-$controler = new IngredientDelete;
+LogInOut::logoutAccount();
 
-$controler->grabInputs();
-$recipeId = $controler->getRecipeId();
-
-$controler->deleteIngredient();
-header("Location: ../editRecipe.php?$recipeId");
+header("Location: ../login.php");

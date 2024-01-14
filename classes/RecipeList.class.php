@@ -5,7 +5,11 @@ class RecipeList extends Database {
 
     public function loadRecipes(){
 
-        $recipes = $this->connectDatabase()->query(SqlQuery::GET_ALL_RECIPES);
+        $userId = User::getLogged()->getId() ?? false;
+
+        $recipes = $this->connectDatabase()->prepare(SqlQuery::GET_ALL_RECIPES);
+        $recipes->bindParam(":userId", $userId, PDO::PARAM_STR);
+        $recipes->execute();
         $result = $recipes->fetchAll();
 
         $recipeList = [];

@@ -7,7 +7,7 @@ abstract class Database {
     const DATABASE_USER = "root";
     const DATABASE_PASSWORD = "";
     const DATABASE_CHARSET = "utf8mb4";
-    const HASH_METHOD = "crc32b";
+    const HASH_METHOD = "md5";
 
     protected function connectDatabase(){
 
